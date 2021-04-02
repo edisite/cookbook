@@ -1,0 +1,11 @@
+<odoo>
+    <template id='homepage_custom' name='Home Page Custome'>
+        <t t-call='website.layout'>
+            <div class='container'>
+                <h2>welcome home page custome</h2>
+            
+            </div>
+        </t>
+    
+    </template>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+    <template id="create_car_form" name="Cars">
+        <t t-call="website.layout">
+            <div class="container">
+                <h2>Form New Cars</h2>
+                    <form action="/cars/save/" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                        
+                        <div class="form-group row">
+
+                            <div class="col-sm-6">                                
+                                <div class="col-sm-12">                                
+                                    <label for='name' class="col-sm-12 col-form-label">Name</label>
+                                    <input type="text" name="name" class="form-control"></input>    
+                                                            
+                                </div>                            
+                                <div class="col-sm-12">                                
+                                    <label for='doors_number' class="col-sm-12 col-form-label">Door Number</label>
+                                    <input type="number" name="doors_number" class="form-control"></input>    
+                                                            
+                                </div>                            
+                                <div class="col-sm-12">                                
+                                    <label for='hoors_power' class="col-sm-12 col-form-label">Hoors Number</label>
+                                    <input type="number" name="hoors_power" class="form-control"></input>    
+                                                            
+                                </div>  
+                                <t t-set="partner" t-value="request.env['res.partner'].search([])" />                             
+                                <div class="col-sm-12">                                
+                                    <label for='driver_id' class="col-sm-12 col-form-label">Driver</label>
+                                    <select name="driver_id" class="form-control">
+                                        <t t-foreach="partner" t-as="line">
+                                            <option 
+                                                t-att-value="line.id"><t t-esc="line.name"/>
+                                            </option>  
+                                        </t>
+                                    </select>
+                                                            
+                                </div> 
+                            </div>
+                        
+                        </div>
+                        <div class="form-group row">                        
+                            <div class="col-sm-12">                                
+                                
+                                <button string="Submit" type="submit" special="submit" class="btn btn-primary">Submit</button>
+                                
+                                                        
+                            </div>
+                        </div>
+                    
+                    
+                    </form>
+            
+            </div>
+        
+        </t>
+    </template>
+</odoo>
